@@ -18,10 +18,10 @@ def contar_vocales(mi_string):
     resultado = {}
     for letra in mi_string:
         # if letra in 'aeiou':
-        if letra in vocales:
-            if letra not in resultado:
-                resultado[letra] = 0
-            resultado[letra] += 1
+        if letra.lower() in vocales:
+            if letra.lower() not in resultado:
+                resultado[letra.lower()] = 0
+            resultado[letra.lower()] += 1
     return resultado
 
 
@@ -49,7 +49,30 @@ class TestContarVocales(unittest.TestCase):
     def test_contar_casanova(self):
         resultado = contar_vocales('casanova')
         self.assertEqual(resultado, {'a': 3, 'o': 1})
+    
+    def test_contar_CaSaNoVa(self):
+        resultado = contar_vocales('CaSaNoVa')
+        self.assertEqual(resultado, {'a': 3, 'o': 1})
+    
+    def test_contar_CaSaNoVa(self):
+        resultado = contar_vocales('CaSaNoVa')
+        self.assertEqual(resultado, {'a': 3, 'o': 1})
+    
+    def test_contar_INGENIERO(self):
+        resultado = contar_vocales('INGENIERO')
+        self.assertEqual(resultado, {'i': 2, 'o': 1, 'e' : 2})
+ 
+    def test_contar_sin_vocales(self):
+        resultado = contar_vocales('rpp')
+        self.assertEqual(resultado, {})
 
+    def test_contar_cOmPUtadORA(self):
+        resultado = contar_vocales('cOmPUtadORA')
+        self.assertEqual(resultado, {'o': 2, 'u': 1, 'a' : 2})
+
+    def test_con_espacios(self):
+        resultado = contar_vocales('Rocio Portal')
+        self.assertEqual(resultado, {'a': 1, 'o': 3, 'i': 1})
 
 unittest.main()
 
